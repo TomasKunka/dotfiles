@@ -2,7 +2,7 @@ if [[ ! -f ~/.antigen.zsh ]]; then
   curl https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/.antigen.zsh
 fi
 
-source ~/antigen.zsh
+source ~/.antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
