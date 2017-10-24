@@ -1,8 +1,8 @@
-if [[ ! -f ~/.antigen.zsh ]]; then
-    curl -L git.io/antigen > ~/.antigen.zsh
+if [[ ! -f ~/antigen.zsh ]]; then
+    curl -L git.io/antigen > ~/antigen.zsh
 fi
 
-source ~/.antigen.zsh
+source ~/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
