@@ -1,5 +1,5 @@
 if [[ ! -f ~/.antigen.zsh ]]; then
-  curl https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/.antigen.zsh
+    curl -L git.io/antigen > ~/.antigen.zsh
 fi
 
 source ~/.antigen.zsh
