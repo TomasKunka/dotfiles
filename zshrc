@@ -1,3 +1,10 @@
+if [[ -f ~/.env.zsh ]]; then
+    source ~/.env.zsh
+fi
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 if [[ ! -f ~/antigen.zsh ]]; then
     curl -L git.io/antigen > ~/antigen.zsh
 fi
@@ -19,6 +26,3 @@ antigen theme robbyrussell
 
 # Tell Antigen that you're done.
 antigen apply
-
-# unset colors set by oh-my-zsh
-# unset LSCOLORS
