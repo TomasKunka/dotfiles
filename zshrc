@@ -26,3 +26,5 @@ antigen theme robbyrussell
 
 # Tell Antigen that you're done.
 antigen apply
+
+alias rm=trash
