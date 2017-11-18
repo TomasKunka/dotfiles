@@ -19,6 +19,7 @@ git
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
 z
+vi-mode
 EOBUNDLES
 
 # Load the theme.
