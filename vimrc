@@ -1,6 +1,5 @@
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
-"Plug 'crusoexia/vim-monokai'
 Plug 'sickill/vim-monokai'
 " Declare the list of plugins.
 call plug#end()
