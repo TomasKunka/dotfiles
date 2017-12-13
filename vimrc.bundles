@@ -14,6 +14,10 @@ call plug#begin('~/.vim/plugged')
 " [1]
 
 Plug 'sickill/vim-monokai'
+" Awesome looking meta at bottom
+" Fugitive will help with git related stuff, and show branch on statusline
+Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+
 " Declare the list of plugins.
 call plug#end()
 
@@ -26,3 +30,5 @@ call plug#end()
 syntax on
 set t_Co=256
 colorscheme monokai
+" Allow powerline symbols to show up
+let g:airline_powerline_fonts = 1
