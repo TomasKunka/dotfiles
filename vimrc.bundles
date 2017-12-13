@@ -1,0 +1,28 @@
+"
+" :so % to refresh .vimrc after making changes
+" :PlugInstall to install new stuff
+" :PlugUpdate to update to latest versions
+"
+if &compatible
+  set nocompatible
+end
+
+call plug#begin('~/.vim/plugged')
+
+""" Theme / Pretty stuff
+"""
+" [1]
+
+Plug 'sickill/vim-monokai'
+" Declare the list of plugins.
+call plug#end()
+
+"""" PLUGIN RELATED TWEAKS
+""
+"
+
+" [1]
+" Color scheme
+syntax on
+set t_Co=256
+colorscheme monokai

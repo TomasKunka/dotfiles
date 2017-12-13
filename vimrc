@@ -1,14 +1,7 @@
-" Plugins will be downloaded under the specified directory.
-call plug#begin('~/.vim/plugged')
-Plug 'sickill/vim-monokai'
-" Declare the list of plugins.
-call plug#end()
-
-"set clipboard=unnamed
-
-syntax on
-colorscheme monokai
-set t_Co=256
+" Load up all of our plugins
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
 " Disable Arrow keys in Escape mode
 map <up> <nop>
@@ -21,6 +14,12 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+
+"Use enter to create new lines w/o entering insert mode
+nnoremap <CR> o<Esc>
+"Below is to fix issues with the ABOVE mappings in quickfix window
+autocmd CmdwinEnter * nnoremap <CR> <CR>
+autocmd BufReadPost quickfix nnoremap <CR> <CR>
 
 "Toggle relative numbering, and set to absolute on loss of focus or insert mode
 set rnu

@@ -13,5 +13,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 echo "-= Symlinking new configs =-"
 ln -s ~/dotfiles/zshrc ~/.zshrc
 ln -s ~/dotfiles/vimrc ~/.vimrc
+ln -s ~/dotfiles/vimrc.bundles ~/.vimrc.bundles
 
 echo "-= Log out and Log Back In to see changes =-"
