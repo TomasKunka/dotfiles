@@ -1,12 +1,13 @@
 #!/bin/bash
 echo "-= Installing System Dependencies =-"
-brew install zsh tmux neovim/neovim/neovim python3 ag reattach-to-user-namespace
+brew install zsh tmux neovim/neovim/neovim python3 the_silver_searcher reattach-to-user-namespace
+brew install ranger
 brew tap caskroom/cask
 brew cask install iterm2
 
 echo "-= Upgrading Vim with Package Manager =-"
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 pip3 install neovim
 
 brew tap caskroom/fonts
@@ -15,7 +16,7 @@ brew cask install font-meslo-for-powerline
 echo "-= Assigning Zsh as Default Shell =-"
 chsh -s $(which zsh)
 
-rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.config/nvim 2> /dev/null
+rm -rf ~/.vim ~/.vimrc ~/.vimrc.bundles ~/.zshrc ~/.tmux ~/.tmux.conf ~/.config/nvim 2> /dev/null
 mkdir -p ~/.config ~/.config/nvim
 
 echo "-= Symlinking new configs =-"

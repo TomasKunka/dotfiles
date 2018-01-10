@@ -7,17 +7,48 @@ if &compatible
   set nocompatible
 end
 
+" Declare the list of plugins.
 call plug#begin('~/.local/share/nvim/plugged')
 """ Theme / Pretty stuff
 """
-" [1]
 
+" [0] Unite is required for many plugins to work as expected.
+Plug 'Shougo/unite.vim'
+
+" [1]
 Plug 'sickill/vim-monokai'
 " Awesome looking meta at bottom
 " Fugitive will help with git related stuff, and show branch on statusline
 Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
-" Declare the list of plugins.
+" [2]
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
+
+" [3]
+" tmux
+
+" [4] search filesystem with ctrl+p
+Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
+
+" [5] Indent Guides
+Plug 'Yggdroot/indentLine'
+
+" [6] Git Gutter
+Plug 'airblade/vim-gitgutter'
+
+" [7] Find in Files
+Plug 'mhinz/vim-grepper'
+
+" [8] Autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" [9] Linting
+Plug 'w0rp/ale'
+
+" [10] Sneaking — Efficient Moving
+Plug 'justinmk/vim-sneak'
+
 call plug#end()
 
 """" PLUGIN RELATED TWEAKS
@@ -31,3 +62,55 @@ set t_Co=256
 colorscheme monokai
 " Allow powerline symbols to show up
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled=1
+set laststatus=2
+
+" [2]
+" open ranger when vim open a directory
+let g:ranger_replace_netrw = 1
+
+" [3]
+" tmux
+
+" [4]
+"
+nnoremap <Leader>p :CtrlP<CR>
+nnoremap <Leader>t :CtrlP<CR>
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_working_path_mode = 'r'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+  let g:ctrlp_extensions = ['line']
+endif
+
+" [5]
+let g:indentLine_enabled = 1
+
+" [6]
+
+" [7]
+nnoremap <Leader>fp :Grepper<Space>-query<Space>
+nnoremap <Leader>fb :Grepper<Space>-buffers<Space>-query<Space>-<Space>
+
+" [8]
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+"[9]
+
+"[10]
+let g:sneak#s_next = 1
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F

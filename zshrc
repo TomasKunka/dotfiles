@@ -2,7 +2,7 @@ if [[ -f ~/.env.zsh ]]; then
     source ~/.env.zsh
 fi
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 if [[ ! -f ~/antigen.zsh ]]; then
