@@ -4,11 +4,14 @@ brew install zsh tmux neovim/neovim/neovim python3 the_silver_searcher reattach-
 brew install ranger
 brew tap caskroom/cask
 brew cask install iterm2
+brew install ctags
 
 echo "-= Upgrading Vim with Package Manager =-"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 pip3 install neovim
+pip3 install flake8
+pip3 install jedi
 
 brew tap caskroom/fonts
 brew cask install font-meslo-for-powerline

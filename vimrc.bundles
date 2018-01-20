@@ -29,7 +29,7 @@ Plug 'rbgrouleff/bclose.vim'
 " tmux
 
 " [4] search filesystem with ctrl+p
-Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'ctrlpvim/ctrlp.vim'
 
 " [5] Indent Guides
 Plug 'Yggdroot/indentLine'
@@ -42,12 +42,24 @@ Plug 'mhinz/vim-grepper'
 
 " [8] Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-clang'
 
 " [9] Linting
 Plug 'w0rp/ale'
 
 " [10] Sneaking — Efficient Moving
 Plug 'justinmk/vim-sneak'
+
+" [11] Tagbar
+Plug 'majutsushi/tagbar'
+
+" [12]
+" Snippets
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" [13] Comments
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -97,16 +109,34 @@ let g:indentLine_enabled = 1
 " [6]
 
 " [7]
-nnoremap <Leader>fp :Grepper<Space>-query<Space>
-nnoremap <Leader>fb :Grepper<Space>-buffers<Space>-query<Space>-<Space>
+" type a search to find matches in entire project
+nnoremap <leader>fp :Grepper -tool ag -query<Space>
+" type a search to find matches in current buffers
+nnoremap <leader>fb :Grepper -tool ag -buffers -query<Space>
 
 " [8]
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-"[9]
+" Use cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 to generate compile_commands.json
+if system('uname -s') == "Darwin\n"
+  "OSX
+  let g:deoplete#sources#clang#libclang_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+  let g:deoplete#sources#clang#clang_header = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang'
+  let g:deoplete#sources#clang#clang_complete_database = './build'
+else
+  "Linux
+  let g:deoplete#sources#clang#libclang_path = ''
+  let g:deoplete#sources#clang#clang_header = ''
+  let g:deoplete#sources#clang#clang_complete_database = './build'
+endif
 
-"[10]
+" [9]
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
+
+" [10]
 let g:sneak#s_next = 1
 nmap f <Plug>Sneak_f
 nmap F <Plug>Sneak_F
@@ -114,3 +144,17 @@ xmap f <Plug>Sneak_f
 xmap F <Plug>Sneak_F
 omap f <Plug>Sneak_f
 omap F <Plug>Sneak_F
+
+" [11]
+nmap <F8> :TagbarToggle<CR>
+
+" [12]
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" [13]

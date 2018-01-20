@@ -66,13 +66,23 @@ set nowrap
   autocmd FileType markdown setlocal wrap
 " Adjust system undo levels
 set undolevels=100
-" Use system clipboard
-set clipboard=unnamed
+"  Proper PEP8 indentation
+au BufNewFile,BufRead *.py,*.cpp,*.hpp,*.h,*.c
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+" Draw line a 80th column
+set colorcolumn=80
 " Set tab width and convert tabs to spaces
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab
 " Don't let Vim hide characters or make loud dings
 set conceallevel=1
 set noerrorbells
@@ -87,28 +97,19 @@ set sidescrolloff=5
 set mouse=r
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
+set splitbelow
+set splitright
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if system('uname -s') == "Darwin\n"
+  "OSX
+  set clipboard=unnamed 
+else
+  "Linux
+  set clipboard=unnamedplus
+endif
