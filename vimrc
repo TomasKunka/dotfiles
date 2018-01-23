@@ -1,4 +1,3 @@
-language en_US
 " Leader - ( Spacebar )
 let mapleader="\<SPACE>"
 
@@ -106,9 +105,11 @@ nnoremap <C-l> <C-w>l
 set splitbelow
 set splitright
 
+" System specific config
 if system('uname -s') == "Darwin\n"
   "OSX
-  set clipboard=unnamed 
+  set clipboard=unnamed
+  language  en_US.UTF-8
 else
   "Linux
   set clipboard=unnamedplus
