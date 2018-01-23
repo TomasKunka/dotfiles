@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "-= Installing System Dependencies =-"
 
 apt-get update && apt-get install -y \
