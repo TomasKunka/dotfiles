@@ -1,6 +1,5 @@
 #!/bin/bash
 
-npm install --global trash-cli
 echo "-= Upgrading Vim with Package Manager =-"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
