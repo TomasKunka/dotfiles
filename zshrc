@@ -28,7 +28,7 @@ antigen theme robbyrussell
 # Tell Antigen that you're done.
 antigen apply
 
-alias rm=trash
+alias rm='echo "This is not the command you are looking for."; false'
 
 # hotfix after vi-mode plugin
 # start typing + [Up-Arrow] - fuzzy find history forward
