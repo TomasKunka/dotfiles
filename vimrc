@@ -78,7 +78,7 @@ au BufNewFile,BufRead *.py,*.cpp,*.hpp,*.h,*.c
 " Draw line a 80th column
 set colorcolumn=80
 " Set tab width and convert tabs to spaces
-au BufNewFile,BufRead *.js,*.html,*.css
+au BufNewFile,BufRead *.js,*.html,*.css,*.sh
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
