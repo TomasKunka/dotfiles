@@ -12,6 +12,7 @@ apt-get update && apt-get install -y \
   terminator \
   clang \
   ctags \
-  node
+  node \
+  npm
 
 source init.sh
