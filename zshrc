@@ -2,6 +2,13 @@ if [[ -f ~/.env.zsh ]]; then
     source ~/.env.zsh
 fi
 
+autoload colors zsh/terminfo
+colors
+if [ "$TMUX" = "" ]; then tmux; fi
+setopt auto_cd
+setopt correctall
+alias git status='nocorrect git status'
+
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
