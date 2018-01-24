@@ -27,7 +27,7 @@ apt-get install \
   unzip
 
 # install
-git clone https://github.com/neovim/neovim.git && cd neovim
+git clone https://github.com/neovim/neovim.git ~/neovim && cd ~/neovim
 VERSION=0.2.2 && git checkout v${VERSION}
 ./configure && make -j"$(nproc)" && make install
 cd && rm -rf neovim
