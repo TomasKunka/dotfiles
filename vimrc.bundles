@@ -27,6 +27,7 @@ Plug 'rbgrouleff/bclose.vim'
 
 " [3]
 " tmux
+Plug 'christoomey/vim-tmux-navigator'
 
 " [4] search filesystem with ctrl+p
 Plug 'ctrlpvim/ctrlp.vim'

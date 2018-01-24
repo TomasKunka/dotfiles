@@ -13,7 +13,7 @@ apt-get update && apt-get install -y \
   ctags \
   trash-cli
 
-# build neovim form source
+# install neovim form source
 # build prerequisites
 apt-get install \
   ninja-build \
@@ -27,12 +27,20 @@ apt-get install \
   unzip
 
 # install
-git clone https://github.com/neovim/neovim.git
-cd neovim
-make
-make install
-cd ..
-rm -rf neovim
+git clone https://github.com/neovim/neovim.git && cd neovim
+VERSION=0.2.2 && git checkout v${VERSION}
+./configure && make -j"$(nproc)" && make install
+cd && rm -rf neovim
+
+# install tmux from source
+apt-get install \
+  libevent-dev \
+  libncurses-dev
+
+VERSION=2.6 && mkdir ~/tmux-src && curl -L https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz \
+ | tar xvz -C ~/tmux-src && cd ~/tmux-src/tmux*
+./configure && make -j"$(nproc)" && make install
+cd && rm -rf ~/tmux-src
 
 # download powerline font
 curl -fLo /usr/share/fonts/"Meslo LG L DZ Regular for Powerline.ttf" \
