@@ -37,6 +37,11 @@ antigen apply
 
 alias rm='echo "This is not the command you are looking for."; false'
 
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^K" kill-line
+bindkey "^U" backward-kill-line
+
 # hotfix after vi-mode plugin
 # start typing + [Up-Arrow] - fuzzy find history forward
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
