@@ -13,6 +13,6 @@ brew install zsh \
 brew tap caskroom/cask
 brew cask install iterm2
 brew tap caskroom/fonts
-brew cask install font-meslo-for-powerline
+brew cask install font-fira-code
 
 source init.sh
