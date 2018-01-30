@@ -44,8 +44,10 @@ VERSION=2.6 && mkdir ~/tmux-src && \
 ./configure && make -j"$(nproc)" && make install
 cd && rm -rf ~/tmux-src
 
-# download powerline font
-curl -fLo /usr/share/fonts/"Meslo LG L DZ Regular for Powerline.ttf" \
-  https://github.com/powerline/fonts/blob/master/Meslo%20Dotted/Meslo%20LG%20L%20DZ%20Regular%20for%20Powerline.ttf?raw=true
+for type in Regular Bold; do
+    wget -O ~/.local/share/fonts/FiraCode-${type}.ttf \
+    "https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-${type}.ttf?raw=true";
+done
+fc-cache -f 
 
 source init.sh

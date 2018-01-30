@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 
 echo "-= Upgrading Vim with Package Manager =-"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -18,9 +18,15 @@ echo "-= Symlinking new configs =-"
 
 ln -s ~/dotfiles/zshrc ~/.zshrc
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-OSX.conf
-ln -s ~/dotfiles/tmux-linux.conf ~/.tmux-linux.conf
 ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
 ln -s ~/dotfiles/vimrc.bundles ~/.vimrc.bundles
+
+unamestr=$(uname)
+if [[ "$unamestr" == 'Darwin' ]]; then
+  ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-OSX.conf
+else 
+  ln -s ~/dotfiles/tmux-linux.conf ~/.tmux-linux.conf
+  ln -sf ~/dotfiles/Xresources ~/.Xresources
+fi
 
 echo "-= Log out and Log Back In to see changes =-"
