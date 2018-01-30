@@ -23,7 +23,7 @@ ln -s ~/dotfiles/vimrc.bundles ~/.vimrc.bundles
 
 unamestr=$(uname)
 if [[ "$unamestr" == 'Darwin' ]]; then
-  ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-OSX.conf
+  ln -s ~/dotfiles/tmux-osx.conf ~/.tmux-osx.conf
 else 
   ln -s ~/dotfiles/tmux-linux.conf ~/.tmux-linux.conf
   ln -sf ~/dotfiles/Xresources ~/.Xresources
