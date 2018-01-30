@@ -44,10 +44,12 @@ VERSION=2.6 && mkdir ~/tmux-src && \
 ./configure && make -j"$(nproc)" && make install
 cd && rm -rf ~/tmux-src
 
+mkdir -p ~/.local/share/fonts
 for type in Regular Bold; do
     wget -O ~/.local/share/fonts/FiraCode-${type}.ttf \
     "https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-${type}.ttf?raw=true";
 done
 fc-cache -f 
 
+cd ~/dotfiles
 source init.sh
