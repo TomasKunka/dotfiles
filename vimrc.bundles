@@ -44,7 +44,8 @@ Plug 'mhinz/vim-grepper'
 " [8] Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
-Plug 'zchee/deoplete-clang'
+Plug 'tweekmonster/deoplete-clang2'
+" Plug 'zchee/deoplete-clang'
 
 " [9] Linting
 Plug 'w0rp/ale'
@@ -118,19 +119,25 @@ nnoremap <leader>fb :Grepper -tool ag -buffers -query<Space>
 " [8]
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab>  pumvisible() ? "\<c-p>" : "\<s-tab>"
 
-" Use cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 to generate compile_commands.json
-if system('uname -s') == "Darwin\n"
-  "OSX
-  let g:deoplete#sources#clang#libclang_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
-  let g:deoplete#sources#clang#clang_header = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang'
-  let g:deoplete#sources#clang#clang_complete_database = './build'
-else
-  "Linux
-  let g:deoplete#sources#clang#libclang_path = "/usr/lib/llvm-3.8/lib/libclang.so.1"
-  let g:deoplete#sources#clang#clang_header ="/usr/include/clang"
-  let g:deoplete#sources#clang#clang_complete_database = './build'
-endif
+" deoplete-clang2 settings
+let g:clang2_placeholder_next = '<c-e>'
+let g:clang2_placeholder_prev = '<c-y>'
+
+" deoplete-clang settings
+"" Use cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 to generate compile_commands.json
+"if system('uname -s') == "Darwin\n"
+"  "OSX
+"  let g:deoplete#sources#clang#libclang_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+"  let g:deoplete#sources#clang#clang_header = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang'
+"  let g:deoplete#sources#clang#clang_complete_database = './build'
+"else
+"  "Linux
+"  let g:deoplete#sources#clang#libclang_path = "/usr/lib/llvm-3.8/lib/libclang.so.1"
+"  let g:deoplete#sources#clang#clang_header ="/usr/include/clang"
+"  let g:deoplete#sources#clang#clang_complete_database = './build'
+"endif
 
 " [9]
 let g:ale_linters = {
