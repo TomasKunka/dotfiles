@@ -6,12 +6,6 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-"Use enter to create new lines w/o entering insert mode
-nnoremap <CR> o<Esc>
-"Below is to fix issues with the ABOVE mappings in quickfix window
-autocmd CmdwinEnter * nnoremap <CR> <CR>
-autocmd BufReadPost quickfix nnoremap <CR> <CR>
-
 " Space Space to open previously opened file buffer
 nmap <Leader><Leader> <c-^>
 " Next / Previous Buffer (Tab)
@@ -24,10 +18,10 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-nnoremap <Left> :vertical resize -1<CR>
-nnoremap <Right> :vertical resize +1<CR>
-nnoremap <Up> :resize -1<CR>
-nnoremap <Down> :resize +1<CR>
+nnoremap <Left> :vertical resize -5<CR>
+nnoremap <Right> :vertical resize +5<CR>
+nnoremap <Up> :resize -5<CR>
+nnoremap <Down> :resize +5<CR>
 " Disable Arrow keys in Insert mode
 imap <up> <nop>
 imap <down> <nop>
@@ -77,7 +71,7 @@ au BufNewFile,BufRead *.py,*.cpp,*.hpp,*.h,*.c
 " Draw line a 80th column
 set colorcolumn=80
 " Set tab width and convert tabs to spaces
-au BufNewFile,BufRead *.js,*.html,*.css,*.sh
+au BufNewFile,BufRead *.js,*.html,*.css,*.sh,*.yml
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |

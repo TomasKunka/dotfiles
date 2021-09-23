@@ -20,6 +20,7 @@ Plug 'sickill/vim-monokai'
 " Awesome looking meta at bottom
 " Fugitive will help with git related stuff, and show branch on statusline
 Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/goyo.vim'
 
 " [2]
 Plug 'francoiscabrol/ranger.vim'
@@ -43,9 +44,7 @@ Plug 'mhinz/vim-grepper'
 
 " [8] Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-Plug 'tweekmonster/deoplete-clang2'
-" Plug 'zchee/deoplete-clang'
+Plug 'deoplete-plugins/deoplete-jedi'
 
 " [9] Linting
 Plug 'w0rp/ale'
@@ -89,7 +88,8 @@ let g:ranger_replace_netrw = 1
 " [4]
 "
 nnoremap <Leader>p :CtrlP<CR>
-nnoremap <Leader>t :CtrlP<CR>
+nnoremap <Leader>t :CtrlPTag<CR>
+nnoremap <Leader>o :CtrlPBufTag<CR>
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
@@ -112,18 +112,16 @@ let g:indentLine_enabled = 1
 
 " [7]
 " type a search to find matches in entire project
-nnoremap <leader>fp :Grepper -tool ag -query<Space>
+nnoremap <leader>fp :Grepper -tool ag -query --ignore tags<Space>
 " type a search to find matches in current buffers
 nnoremap <leader>fb :Grepper -tool ag -buffers -query<Space>
 
 " [8]
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('auto_complete_delay', 0)
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab>  pumvisible() ? "\<c-p>" : "\<s-tab>"
 
-" deoplete-clang2 settings
-let g:clang2_placeholder_next = '<c-e>'
-let g:clang2_placeholder_prev = '<c-y>'
 
 " deoplete-clang settings
 "" Use cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 to generate compile_commands.json
@@ -146,6 +144,7 @@ let g:ale_linters = {
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_lint_on_text_changed = 'never'
 
 " [10]
 let g:sneak#s_next = 1
@@ -158,6 +157,8 @@ omap F <Plug>Sneak_F
 
 " [11]
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_show_linenumbers=1
+let g:tagbar_autofocus=1
 
 " [12]
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.

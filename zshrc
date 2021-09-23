@@ -11,6 +11,9 @@ alias git status='nocorrect git status'
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export HISTCONTROL=ignoreboth:erasedups
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+
 
 if [[ ! -f ~/antigen.zsh ]]; then
     curl -L git.io/antigen > ~/antigen.zsh
@@ -27,6 +30,7 @@ zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
 z
 vi-mode
+osx
 EOBUNDLES
 
 # Load the theme.
@@ -41,6 +45,7 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^K" kill-line
 bindkey "^U" backward-kill-line
+bindkey "^O" fzf-file-widget
 
 # hotfix after vi-mode plugin
 # start typing + [Up-Arrow] - fuzzy find history forward
@@ -55,3 +60,5 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
   zle -N down-line-or-beginning-search
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

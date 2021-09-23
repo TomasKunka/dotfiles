@@ -13,6 +13,7 @@ apt-get update && apt-get install -y \
   ctags \
   trash-cli \
   xclip
+  fzf
 
 # install neovim form source
 # build prerequisites

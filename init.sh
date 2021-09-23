@@ -6,7 +6,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 pip3 install neovim
 pip3 install flake8
 pip3 install jedi
-
+pip install --user tmuxp
 
 echo "-= Assigning Zsh as Default Shell =-"
 chsh -s $(which zsh)
